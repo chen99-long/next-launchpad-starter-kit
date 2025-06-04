@@ -1,0 +1,24 @@
+
+{
+  "loading": "Loading...",
+  "error": "Error occurred",
+  "retry": "Retry",
+  "close": "Close",
+  "save": "Save",
+  "cancel": "Cancel",
+  "delete": "Delete",
+  "edit": "Edit",
+  "add": "Add",
+  "search": "Search",
+  "filter": "Filter",
+  "sort": "Sort",
+  "previous": "Previous",
+  "next": "Next",
+  "readMore": "Read More",
+  "learnMore": "Learn More",
+  "getStarted": "Get Started",
+  "signIn": "Sign In",
+  "signOut": "Sign Out",
+  "profile": "Profile",
+  "settings": "Settings"
+}

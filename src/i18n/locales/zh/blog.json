@@ -1,0 +1,15 @@
+
+{
+  "title": "博客",
+  "subtitle": "最新文章和见解",
+  "readTime": "分钟阅读",
+  "publishedOn": "发布于",
+  "author": "作者",
+  "tags": "标签",
+  "relatedPosts": "相关文章",
+  "backToBlog": "返回博客",
+  "noPostsFound": "未找到文章",
+  "searchPlaceholder": "搜索文章...",
+  "categories": "分类",
+  "allCategories": "所有分类"
+}

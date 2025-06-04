@@ -1,0 +1,38 @@
+
+{
+  "hero": {
+    "title": "Next-Gen Starter Kit",
+    "subtitle": "Build faster with our comprehensive React template",
+    "description": "A production-ready starter template with internationalization, analytics, SEO optimization, and blog support built right in.",
+    "primaryAction": "Get Started",
+    "secondaryAction": "View Documentation"
+  },
+  "features": {
+    "title": "Everything You Need",
+    "subtitle": "Powerful features out of the box",
+    "i18n": {
+      "title": "Internationalization",
+      "description": "Built-in i18n support with optimized loading and namespace management"
+    },
+    "analytics": {
+      "title": "Google Analytics",
+      "description": "Easy GA4 integration with privacy-focused tracking"
+    },
+    "seo": {
+      "title": "SEO Optimized",
+      "description": "Automatic meta tags, canonical URLs, and structured data"
+    },
+    "blog": {
+      "title": "Markdown Blog",
+      "description": "Write in Markdown, publish automatically with syntax highlighting"
+    },
+    "auth": {
+      "title": "Authentication Ready",
+      "description": "Supabase integration ready for user authentication"
+    },
+    "performance": {
+      "title": "Performance First",
+      "description": "Optimized builds, lazy loading, and modern best practices"
+    }
+  }
+}

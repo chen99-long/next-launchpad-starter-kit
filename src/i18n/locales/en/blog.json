@@ -1,0 +1,15 @@
+
+{
+  "title": "Blog",
+  "subtitle": "Latest articles and insights",
+  "readTime": "min read",
+  "publishedOn": "Published on",
+  "author": "By",
+  "tags": "Tags",
+  "relatedPosts": "Related Posts",
+  "backToBlog": "Back to Blog",
+  "noPostsFound": "No posts found",
+  "searchPlaceholder": "Search articles...",
+  "categories": "Categories",
+  "allCategories": "All Categories"
+}

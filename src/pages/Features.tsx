@@ -2,21 +2,21 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Layout from '@/components/layout/Layout';
-import Hero from '@/components/home/Hero';
 import Features from '@/components/home/Features';
 
-const Index = () => {
+const FeaturesPage = () => {
   const { t } = useTranslation('home');
 
   return (
     <Layout 
-      title={t('hero.title')}
-      description={t('hero.description')}
+      title={t('features.title')}
+      description={t('features.subtitle')}
     >
-      <Hero />
-      <Features />
+      <div className="py-12">
+        <Features />
+      </div>
     </Layout>
   );
 };
 
-export default Index;
+export default FeaturesPage;

@@ -1,0 +1,38 @@
+
+{
+  "hero": {
+    "title": "下一代启动套件",
+    "subtitle": "使用我们全面的 React 模板更快地构建",
+    "description": "生产就绪的启动模板，内置国际化、分析、SEO 优化和博客支持。",
+    "primaryAction": "开始使用",
+    "secondaryAction": "查看文档"
+  },
+  "features": {
+    "title": "应有尽有",
+    "subtitle": "开箱即用的强大功能",
+    "i18n": {
+      "title": "国际化",
+      "description": "内置 i18n 支持，优化加载和命名空间管理"
+    },
+    "analytics": {
+      "title": "Google Analytics",
+      "description": "简单的 GA4 集成，注重隐私的跟踪"
+    },
+    "seo": {
+      "title": "SEO 优化",
+      "description": "自动 meta 标签、canonical URL 和结构化数据"
+    },
+    "blog": {
+      "title": "Markdown 博客",
+      "description": "用 Markdown 写作，自动发布，支持语法高亮"
+    },
+    "auth": {
+      "title": "认证就绪",
+      "description": "Supabase 集成，准备好用户认证"
+    },
+    "performance": {
+      "title": "性能优先",
+      "description": "优化构建、懒加载和现代最佳实践"
+    }
+  }
+}
