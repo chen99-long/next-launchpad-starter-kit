@@ -1,3 +1,4 @@
+
 # 🚀 LaunchPad Starter Kit
 
 A comprehensive React starter template with internationalization, analytics, SEO optimization, and blog support. Built with modern tools and best practices for rapid development.
@@ -54,6 +55,89 @@ A comprehensive React starter template with internationalization, analytics, SEO
    Navigate to `http://localhost:8080`
 
 ## 📋 Configuration Guide
+
+### 🗄️ Supabase 配置
+
+本项目支持 Supabase 集成，用于身份验证、数据库管理和后端功能。
+
+#### 在 Lovable 中配置 Supabase
+
+如果你在 Lovable 编辑器中使用此项目：
+
+1. **连接 Supabase**
+   - 点击编辑器右上角的绿色 Supabase 按钮
+   - 选择"连接到 Supabase"
+   - 按照提示完成连接过程
+
+2. **创建新的 Supabase 项目**（如果还没有）
+   - 访问 [Supabase](https://supabase.com)
+   - 创建新项目
+   - 获取项目 URL 和 API 密钥
+
+3. **配置身份验证**
+   - 在 Supabase 控制台中启用所需的身份验证提供商
+   - 配置电子邮件/密码认证或第三方登录
+
+#### 本地开发配置
+
+如果你在本地开发环境中使用此项目：
+
+1. **安装 Supabase 客户端**
+   ```bash
+   npm install @supabase/supabase-js
+   ```
+
+2. **创建环境变量文件**
+   ```bash
+   # .env.local
+   VITE_SUPABASE_URL=your_supabase_project_url
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+3. **配置 Supabase 客户端**
+   ```typescript
+   // src/lib/supabase.ts
+   import { createClient } from '@supabase/supabase-js'
+
+   const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
+   const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+
+   export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+   ```
+
+#### 数据库设置
+
+1. **创建用户表**
+   ```sql
+   create table profiles (
+     id uuid references auth.users on delete cascade,
+     updated_at timestamp with time zone,
+     username text unique,
+     full_name text,
+     avatar_url text,
+     website text,
+
+     primary key (id),
+     constraint username_length check (char_length(username) >= 3)
+   );
+   ```
+
+2. **设置行级安全策略（RLS）**
+   ```sql
+   alter table profiles enable row level security;
+
+   create policy "Public profiles are viewable by everyone."
+     on profiles for select
+     using ( true );
+
+   create policy "Users can insert their own profile."
+     on profiles for insert
+     with check ( auth.uid() = id );
+
+   create policy "Users can update own profile."
+     on profiles for update
+     using ( auth.uid() = id );
+   ```
 
 ### 🌍 Internationalization Setup
 
@@ -191,13 +275,45 @@ The template works with any static hosting provider:
 - AWS S3 + CloudFront
 - Google Cloud Storage
 
-## 🔐 Authentication (Coming Soon)
+## 🔐 Authentication with Supabase
 
 The template is prepared for Supabase authentication. To enable:
 
-1. Set up a Supabase project
-2. Configure authentication providers
-3. Update the auth components
+1. **Set up Supabase project** (see configuration section above)
+2. **Configure authentication providers** in Supabase dashboard
+3. **Implement auth components**:
+
+```typescript
+// Example auth hook
+import { useEffect, useState } from 'react'
+import { supabase } from '../lib/supabase'
+
+export function useAuth() {
+  const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const getSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession()
+      setUser(session?.user ?? null)
+      setLoading(false)
+    }
+
+    getSession()
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        setUser(session?.user ?? null)
+        setLoading(false)
+      }
+    )
+
+    return () => subscription?.unsubscribe()
+  }, [])
+
+  return { user, loading }
+}
+```
 
 ## 🤝 Contributing
 
